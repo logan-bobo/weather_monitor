@@ -1,0 +1,31 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches:
+      - main 
+      - feature/*
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Run unit tests
+      run: | 
+        cd app/api/ && \
+        python3 --version && \
+        apt install -y python3-pip && \
+        export PYTHONPATH=. && \ 
+        pytest -vqrA tests/api_test.py
+      
+    - name: Build the Docker image
+      run: |
+        cd app/api/ && \
+        docker build . --file Dockerfile --tag weather-api:$(date +%s) && \
+        docker images
+
+      
