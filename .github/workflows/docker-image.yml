@@ -34,7 +34,7 @@ jobs:
     - name: Push docker image
       run : |
         cd app/api/
-        docker login --username loganbobo97 --password-stdin < ${{ secrets.DOCKER_TOKEN }}
+        ${{ secrets.DOCKER_TOKEN }} | docker login --username loganbobo97 --password-stdin
         docker push loganbobo97/weather-app:$version
     
         
