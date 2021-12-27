@@ -27,6 +27,7 @@ jobs:
     - name: Build the Docker image
       run: |
         cd app/api/ && \
+        ls -l && \
         docker build . --file Dockerfile --tag weather-api:$(date +%s) && \
         docker images
 
