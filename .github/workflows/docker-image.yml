@@ -16,19 +16,18 @@ jobs:
     
     - name: Run unit tests
       run: | 
-        cd app/api/ && \
-        python3 --version && \
-        sudo apt install -y python3-pip && \
-        sudo pip3 install -r requirements.txt pytest && \
-        pytest --version && \
-        export PYTHONPATH=. && \
+        cd app/api/ 
+        python3 --version 
+        sudo apt install -y python3-pip 
+        sudo pip3 install -r requirements.txt pytest 
+        pytest --version 
+        export PYTHONPATH=. 
         pytest -vqrA tests/api_test.py
       
     - name: Build the Docker image
       run: |
-        cd app/api/ && \
-        ls -l && \
-        docker build . --file dockerfile --tag weather-api:$(date +%s) && \
+        cd app/api/ 
+        docker build . --file dockerfile --tag weather-api:$(date +%s) 
         docker images
 
       
