@@ -27,7 +27,17 @@ jobs:
     - name: Build the Docker image
       run: |
         cd app/api/ 
-        docker build . --file dockerfile --tag weather-api:$(date +%s) 
+        version=$(date +%s)
+        docker build . --file dockerfile --tag loganbobo97/weather-app:$version
         docker images
+        
+    - name: Push docker image
+      run : |
+        co app/api/
+        docker login --username loganbobo97 --password ${{ secrets.SECRET_TOKEN }}
+        docker push loganbobo97/weather-app:$version
+    
+        
+    
 
       
