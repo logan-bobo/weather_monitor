@@ -10,3 +10,7 @@ The weather API is build using `Python` and `FastAPI`
 # Running the API
  - install requirements defined in `./requirements.txt`
  - `$ uvicorn main:app` to run in live development use `--reload`
+
+# Running the tests 
+ - As our tests and source code are in different directories we need to set the following environment variable `export PYTHONPATH=.`
+ - From the api directory run the following `pytest -vqrA tests/api_test.py`

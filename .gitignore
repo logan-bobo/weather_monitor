@@ -1,7 +1,10 @@
 # python venv
 weather-api/
+
+# vscode
+.vscode
 # Byte-compiled / optimized / DLL files
-app/api/__pycache__/
+app/api/src/__pycache__/
 *.py[cod]
 *$py.class
 
