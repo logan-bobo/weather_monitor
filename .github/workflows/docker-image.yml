@@ -33,7 +33,7 @@ jobs:
         
     - name: Push docker image
       run : |
-        co app/api/
+        cp app/api/
         docker login --username loganbobo97 --password ${{ secrets.SECRET_TOKEN }}
         docker push loganbobo97/weather-app:$version
     
