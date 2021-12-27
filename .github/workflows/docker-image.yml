@@ -19,7 +19,9 @@ jobs:
         cd app/api/ && \
         python3 --version && \
         apt install -y python3-pip && \
-        export PYTHONPATH=. && \ 
+        pip3 install -U pytest && \
+        pytest --version && \
+        export PYTHONPATH=. && \
         pytest -vqrA tests/api_test.py
       
     - name: Build the Docker image
