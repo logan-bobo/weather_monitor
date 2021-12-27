@@ -19,7 +19,7 @@ jobs:
         cd app/api/ && \
         python3 --version && \
         sudo apt install -y python3-pip && \
-        sudo pip3 install -U pytest && \
+        sudo pip3 install -r requirements.txt && \
         pytest --version && \
         export PYTHONPATH=. && \
         pytest -vqrA tests/api_test.py
