@@ -42,7 +42,7 @@ jobs:
 
     - name: Push docker image
       run : |
-        docker push loganbobo97/weather-app:${{ env.VERSION }}
+        docker push loganbobo97/weather-app:latest
 
 
 
