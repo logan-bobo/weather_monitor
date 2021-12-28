@@ -26,6 +26,7 @@ jobs:
       
     - name: Build the Docker image
       run: |
+        cd app/api/ 
         version=$(date +%s)
         docker build . --file dockerfile --tag loganbobo97/weather-app:$version
         docker images
