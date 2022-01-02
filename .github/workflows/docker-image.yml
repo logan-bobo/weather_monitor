@@ -23,6 +23,7 @@ jobs:
         sudo pip3 install -r requirements.txt pytest 
         pytest --version 
         export PYTHONPATH=. 
+        export API_KEY=${{ secrets.API_KEY}}
         pytest -vqrA tests/api_test.py
         
     - name: Login to DockerHub
