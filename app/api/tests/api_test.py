@@ -11,5 +11,5 @@ def test_health():
 
 # Test for our locations
 def test_location():
-    weather = getweather(1234)
-    assert weather == {"location": 1234}
+    weather = getweather(53.480837, -2.244914)
+    assert 0 <= weather["temperature"] <= 100
