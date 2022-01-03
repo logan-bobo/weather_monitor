@@ -21,6 +21,7 @@ def getweather( latitude: float, longitude: float ):
     engine = Nominatim(user_agent="google")
     location = engine.reverse(f"{latitude}, {longitude}")
     address = location.address.split(",")
+    print(address)
     city = address[4]
     print(city)
 
