@@ -25,7 +25,7 @@ def getweather( latitude: float, longitude: float ):
 
     # Request to open weather with out city name and unity to grab back all weather conditions for that city
     response = requests.get(f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units={units}")
-    print(response)
+    print(response.text)
     response_json = json.loads(response.text)
     print(response_json)
     temperature = response_json["main"]["temp"]
