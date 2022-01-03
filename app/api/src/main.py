@@ -17,7 +17,7 @@ units = "metric"
 @app.get("/location/{latitude}/{longitude}")
 def getweather( latitude: float, longitude: float ):
 
-    # Geopy to convert out longitude and latitude and an adress and then select the city from that address
+    # Geopy to convert out longitude and latitude and an address and then select the city from that address
     engine = Nominatim(user_agent="google")
     location = engine.reverse(f"{latitude}, {longitude}")
     address = location.address.split(",")
@@ -25,7 +25,9 @@ def getweather( latitude: float, longitude: float ):
 
     # Request to open weather with out city name and unity to grab back all weather conditions for that city
     response = requests.get(f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units={units}")
+    print(response)
     response_json = json.loads(response.text)
+    print(response_json)
     temperature = response_json["main"]["temp"]
 
     return {"temperature" : temperature}
