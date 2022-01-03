@@ -2,15 +2,22 @@
 
 The weather API is build using `Python` and `FastAPI`
 
-# Reasoning for fast API
-- Fast to run and has similar performance with NodeJS and Go
-- Designed to be non-complex 
+## Reasoning for fast API
+
+- Fast to run and has similar performance to NodeJS and Go
+- Designed to be non-complex and easy to pick up
 - Great support
 
-# Running the API
- - install requirements defined in `./requirements.txt`
- - `$ uvicorn main:app` to run in live development use `--reload`
+## Setting up venv
 
-# Running the tests 
- - As our tests and source code are in different directories we need to set the following environment variable `export PYTHONPATH=.`
- - From the api directory run the following `pytest -vqrA tests/api_test.py`
+- Create venv `python3 -m venv weather-app`
+- enter venv `source tutorial-env/bin/activate`
+- install requirements defined in `./requirements.txt`
+
+## Running the API
+
+- install requirements defined in `./requirements.txt`
+
+## Running the tests
+
+- From the api directory run the following `python -m pytest tests/`
