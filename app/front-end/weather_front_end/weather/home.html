@@ -1,0 +1,8 @@
+<!-- base.html -->
+{% extends "base.html" %} {% block content %}
+<ul>
+    {% for temperature in temperature %}
+    <li>{{ temperature.id }} - {{ temperature.title }}</li>
+    {% endfor %}
+</ul>
+{% endblock content %}

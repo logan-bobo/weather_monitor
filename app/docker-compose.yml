@@ -1,0 +1,8 @@
+version: "3.9"
+services:
+  api:
+    image: loganbobo97/weather-app:1641216057
+    ports:
+      - "8000:8000"
+    environment:
+      - API_KEY=${API_KEY}
