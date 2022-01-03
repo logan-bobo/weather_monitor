@@ -21,7 +21,8 @@ def getweather( latitude: float, longitude: float ):
     engine = Nominatim(user_agent="google")
     location = engine.reverse(f"{latitude}, {longitude}")
     address = location.address.split(",")
-    city = address[5]
+    city = address[-6]
+
 
     # Request to open weather with out city name and unity to grab back all weather conditions for that city
     response = requests.get(f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units={units}")
