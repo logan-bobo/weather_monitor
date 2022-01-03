@@ -11,12 +11,12 @@ The weather API is build using `Python` and `FastAPI`
 ## Setting up venv
 
 - Create venv `python3 -m venv weather-app`
-- enter venv `source tutorial-env/bin/activate`
-- install requirements defined in `./requirements.txt` with `pip3 -r ./requirements.txt` for the application and ensure you install `pytest`
+- Enter venv `source tutorial-env/bin/activate`
+- Install requirements defined in `./requirements.txt` with `pip3 -r ./requirements.txt` for the application and ensure you install `pytest`
 
 ## Running the API
 
-- install requirements defined in `./requirements.txt`
+- Install requirements defined in `./requirements.txt`
 
 ## Running the tests
 
