@@ -2,8 +2,6 @@
 
 import os
 import requests
-import json
-
 from requests import api 
 
 from geopy.geocoders import Nominatim
