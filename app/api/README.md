@@ -21,3 +21,8 @@ The weather API is build using `Python` and `FastAPI`
 ## Running the tests
 
 - From the api directory run the following `python -m pytest tests/`
+
+## Access the pre-built API docs
+
+- When the API is running, FastAPI will also generate its own documentation
+ to access these running the server locally `http://127.0.0.1:8000/docs`.
