@@ -2,6 +2,7 @@
 
 import os
 import requests
+import json
 from requests import api 
 
 from geopy.geocoders import Nominatim
@@ -20,12 +21,13 @@ def get_address( latitude: float, longitude: float):
 
     # Search our location based on longitude and latitude
     location = engine.reverse(f"{latitude}, {longitude}")
-    # Convert out location string in to a list in order to select the address element
-    address = location.address.split(",")
 
-    return address[-6]
+    # Get the raw output from out location lookup and select the keys that give us the city name
+    address = location.raw["address"]["city"]
 
-def get_temperature(city):
+    return address
+
+def get_temperature(city: str):
     """ Get the temperature for a city based"""
     # Request to open weather with our city name and unit to grab back all weather conditions for that city
     response = requests.get("https://api.openweathermap.org/data/2.5/weather",
@@ -38,9 +40,11 @@ def get_temperature(city):
 
     # Set the response JSON to be the json output of the request
     response_json = response.json()
-    
+
     # Filter the JSON object to the temperature 
-    return response_json["main"]["temp"]
+    temperature = response_json["main"]["temp"]
+    
+    return temperature
 
 
 # Send user location to open weather and return the weather based on location
