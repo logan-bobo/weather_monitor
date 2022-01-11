@@ -9,11 +9,12 @@ from requests import api
 from geopy.geocoders import Nominatim
 from fastapi import FastAPI
 
-#Create an instance of the FastAPI
+# Create an instance of the FastAPI
 app = FastAPI()
+# Set our main api key
 api_key = os.getenv('API_KEY')
 units = "metric"
-# Geopy to convert out longitude and latitude and an address and then select the city from that address
+# Create an instance of our engine to convert longitude and latitude to an address
 engine = Nominatim(user_agent="google")
 
 def get_address( latitude: float, longitude: float):
@@ -23,14 +24,12 @@ def get_address( latitude: float, longitude: float):
     location = engine.reverse(f"{latitude}, {longitude}")
     # Convert out location string in to a list in order to select the address element
     address = location.address.split(",")
-    print(address)
 
     return address[-6]
 
 def get_temperature(city):
     """ Get the temperature for a city based"""
     # Request to open weather with our city name and unit to grab back all weather conditions for that city
-    print(api_key)
     response = requests.get("https://api.openweathermap.org/data/2.5/weather",
         params = {
             'q' : city,
@@ -38,11 +37,10 @@ def get_temperature(city):
             'units' : units,
         }
     )
-    print(response.url)
-    # Convert our responce to a JSON object
-    response_json = json.loads(response.text)
-    print(response_json)
 
+    # Set the response JSON to be the json output of the request
+    response_json = response.json()
+    
     # Filter the JSON object to the temperature 
     return response_json["main"]["temp"]
 
