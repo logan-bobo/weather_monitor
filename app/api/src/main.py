@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 
+"""
+Instantiate FastAPI along with functions to convert latitude and longitude to temperature
+"""
+
 import os
 import requests
-import json
-from requests import api 
 
 from geopy.geocoders import Nominatim
 from fastapi import FastAPI
@@ -12,7 +14,7 @@ from fastapi import FastAPI
 app = FastAPI()
 # Set our main api key
 api_key = os.environ.get('API_KEY')
-units = "metric"
+UNITS = "metric"
 # Create an instance of our engine to convert longitude and latitude to an address
 engine = Nominatim(user_agent="google")
 
@@ -29,27 +31,28 @@ def get_address( latitude: float, longitude: float):
 
 def get_temperature(city: str):
     """ Get the temperature for a city based"""
-    # Request to open weather with our city name and unit to grab back all weather conditions for that city
+    # Request to open weather with our city name and unit to grab back all weather
+    # conditions for that city
     response = requests.get("https://api.openweathermap.org/data/2.5/weather",
         params = {
             'q' : city,
             'appid' : api_key,
-            'units' : units,
+            'units' : UNITS,
         }
     )
 
     # Set the response JSON to be the json output of the request
     response_json = response.json()
 
-    # Filter the JSON object to the temperature 
+    # Filter the JSON object to the temperature
     temperature = response_json["main"]["temp"]
-    
-    return temperature
 
+    return temperature
 
 # Send user location to open weather and return the weather based on location
 @app.get("/location/{latitude}/{longitude}")
 def getweather( latitude: float, longitude: float ):
+    """ Returns a temperature based on a latitude and longitude """
     city = get_address(latitude, longitude)
     temperature = get_temperature(city)
 
@@ -58,4 +61,5 @@ def getweather( latitude: float, longitude: float ):
 # API health endpoint
 @app.get("/health")
 def health():
+    """ Returns the health of the API"""
     return {"Health": "Green"}
