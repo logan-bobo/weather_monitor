@@ -11,7 +11,7 @@ from fastapi import FastAPI
 # Create an instance of the FastAPI
 app = FastAPI()
 # Set our main api key
-api_key = os.getenv('API_KEY')
+api_key = os.environ.get('API_KEY')
 units = "metric"
 # Create an instance of our engine to convert longitude and latitude to an address
 engine = Nominatim(user_agent="google")
