@@ -26,7 +26,7 @@ jobs:
     
     - name: lint
       run: |
-        sudo pip3 install -y pylint
+        sudo pip3 install pylint
         pylint --fail-under=9 src/main.py  
   
   Docker-build-and-push:
