@@ -38,10 +38,9 @@ jobs:
 
       - name: Build and push the Docker image
         run: |
-          export VERSION=$(date +%s)
           cd app/api/ 
-          docker build . --file dockerfile --tag loganbobo97/weather-app:$VERSION
-          docker push loganbobo97/weather-app:$VERSION
+          docker build . --file dockerfile --tag loganbobo97/weather-app:latest
+          docker push loganbobo97/weather-app:latest
 
 
 
