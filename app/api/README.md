@@ -12,15 +12,14 @@ The weather API is build using `Python` and `FastAPI`
 
 - Create venv `python3 -m venv weather-app`
 - Enter venv `source weather-app/bin/activate`
-- Install requirements defined in `./requirements.txt` with `pip3 -r ./requirements.txt` for the tests and ensure you install `pytest`
-
+- Install requirements defined in `./requirements.txt` with `pip3 install -r ./requirements.txt`
 ## Running the API
 
 - To run the API execute `uvicorn main:app`
 
 ## Running the tests
 
-- From the api directory run the following `python -m pytest tests/`
+- From the api directory run the following `python3 -m unittest tests/api_test.py`
 
 ## Access the pre-built API docs
 

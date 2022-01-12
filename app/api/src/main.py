@@ -12,7 +12,7 @@ from geopy.geocoders import Nominatim
 from fastapi import FastAPI
 
 # Create an instance of the FastAPI
-APP = FastAPI()
+app = FastAPI()
 # Set our main api key
 API_KEY = os.environ.get('API_KEY')
 UNITS = "metric"
@@ -51,7 +51,7 @@ def get_temperature(city: str):
     return temperature
 
 # Send user location to open weather and return the weather based on location
-@APP.get("/location/{latitude}/{longitude}")
+@app.get("/location/{latitude}/{longitude}")
 def getweather(latitude: float, longitude: float):
     """ Returns a temperature based on a latitude and longitude """
     city = get_address(latitude, longitude)
@@ -60,7 +60,7 @@ def getweather(latitude: float, longitude: float):
     return {"temperature" : temperature}
 
 # API health endpoint
-@APP.get("/health")
+@app.get("/health")
 def health():
     """ Returns the health of the API"""
     return {"Health": "Green"}
