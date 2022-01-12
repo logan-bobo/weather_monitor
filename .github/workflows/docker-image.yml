@@ -20,9 +20,13 @@ jobs:
         cd app/api/ 
         python3 --version 
         sudo apt install -y python3-pip 
-        sudo pip3 install -r requirements.txt pylint
+        sudo pip3 install -r requirements.txt
         export API_KEY=${{ secrets.API_KEY }}
         python3 -m unittest tests/api_test.py 
+    
+    - name: lint
+      run: |
+        sudo pip3 install -y pylint
         pylint --fail-under=9 src/main.py  
   
   Docker-build-and-push:
