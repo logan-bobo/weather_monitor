@@ -13,6 +13,7 @@ The weather API is build using `Python` and `FastAPI`
 - Create venv `python3 -m venv weather-app`
 - Enter venv `source weather-app/bin/activate`
 - Install requirements defined in `./requirements.txt` with `pip3 install -r ./requirements.txt`
+
 ## Running the API
 
 - To run the API execute `uvicorn main:app`

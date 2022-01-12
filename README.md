@@ -4,7 +4,7 @@
 
 A web app designed to take in your location and provide you the current temperature in your area.
 
-## Functionality 
+## Functionality
 
 - A front end that will get the current location from your browser, then feed back the temperature for that location.
 
