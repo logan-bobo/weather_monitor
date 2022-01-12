@@ -1,8 +1,10 @@
-# Weather Monitor
+# 🌡 Weather Monitor 🌡
+
+![example workflow](https://github.com//logan-bobo/weather-monitor/actions/workflows/docker-image.yml/badge.svg)
 
 A web app designed to take in your location and provide you the current temperature in your area.
 
-## Functionality
+## Functionality 
 
 - A front end that will get the current location from your browser, then feed back the temperature for that location.
 
