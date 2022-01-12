@@ -26,6 +26,7 @@ jobs:
     
     - name: lint
       run: |
+        cd app/api/ 
         sudo pip3 install pylint
         pylint --fail-under=9 src/main.py  
   
