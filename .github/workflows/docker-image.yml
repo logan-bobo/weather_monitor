@@ -9,13 +9,12 @@ on:
     branches: [ main ]
       
 jobs:
-  Lint-and-Test:
+  build-and-push:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
 
-
-    - name: Run unit tests
+    - name: unit tests
       run: | 
         cd app/api/ 
         python3 --version 
@@ -24,28 +23,23 @@ jobs:
         export API_KEY=${{ secrets.API_KEY }}
         python3 -m unittest tests/api_test.py 
     
-    - name: lint
+    - name: linting
       run: |
         cd app/api/ 
         sudo pip3 install pylint
         pylint --fail-under=9 src/main.py  
-  
-  Docker-build-and-push:
-      runs-on: ubuntu-latest
-      steps:
-      - uses: actions/checkout@v2
       
-      - name: Login to DockerHub
-        uses: docker/login-action@v1
-        with:
-          username: ${{ secrets.DOCKER_USER }}
-          password: ${{ secrets.DOCKER_TOKEN }}
+    - name: Login to DockerHub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKER_USER }}
+        password: ${{ secrets.DOCKER_TOKEN }}
 
-      - name: Build and push the Docker image
-        run: |
-          cd app/api/ 
-          docker build . --file dockerfile --tag loganbobo97/weather-app:latest
-          docker push loganbobo97/weather-app:latest
+    - name: Build and push the Docker image
+      run: |
+        cd app/api/ 
+        docker build . --file dockerfile --tag loganbobo97/weather-app:latest
+        docker push loganbobo97/weather-app:latest
 
 
 
